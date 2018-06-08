@@ -17,8 +17,11 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        PushManager.handleMessage(this);
+        // 处理推送消息
+        if (PushManager.handleMessage(this)) {
+            finish();
+            return;
+        }
         if (!isTaskRoot()) {
             Intent intent = getIntent();
             String action = intent.getAction();

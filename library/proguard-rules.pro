@@ -19,3 +19,16 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+## 小米 ##
+#这里com.xiaomi.mipushdemo.DemoMessageRreceiver改成app中定义的完整类名
+-keep class com.xiaomi.mipush.sdk.DemoMessageReceiver {*;}
+#可以防止一个误报的 warning 导致无法成功编译，如果编译使用的 Android 版本是 23。
+-dontwarn com.xiaomi.push.**
+
+## 信鸽 ##
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep class com.tencent.android.tpush.** {* ;}
+-keep class com.tencent.mid.** {* ;}
+-keep calss com.qq.taf.jce** {*;}

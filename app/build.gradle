@@ -10,10 +10,10 @@ android {
         versionName "1.0"
 
         manifestPlaceholders = [
+                PACKAGE_NAME:"com.mic.push",
                 XG_ACCESS_ID: "2100293400",
                 XG_ACCESS_KEY: "AIG72431QUVD",
-                PACKAGE_NAME:"com.mic.push",
-                MI_APP_ID:"2882303761517805379",
+                MI_APP_ID: "2882303761517805379",
                 MI_APP_KEY : "5871780552379",
         ]
     }
