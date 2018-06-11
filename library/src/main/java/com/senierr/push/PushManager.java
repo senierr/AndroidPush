@@ -3,11 +3,16 @@ package com.senierr.push;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.senierr.push.internal.PushBaseReceiver;
 import com.senierr.push.internal.PushMessage;
+import com.senierr.push.util.RomUtil;
+import com.senierr.push.util.SystemUtil;
 import com.tencent.android.tpush.XGPushClickedResult;
 import com.tencent.android.tpush.XGPushManager;
+import com.xiaomi.mipush.sdk.MiPushClient;
 import com.xiaomi.mipush.sdk.MiPushMessage;
 import com.xiaomi.mipush.sdk.PushMessageHelper;
 
@@ -30,8 +35,6 @@ public class PushManager {
     public static final int TYPE_MI = 1;
     public static final int TYPE_XG = 2;
 
-    private static final String TAG = PushManager.class.getSimpleName();
-
     /**
      * 注册推送
      *
@@ -39,19 +42,19 @@ public class PushManager {
      */
     public static void register(Context context) {
         // 1. 判断谷歌服务是否可用 -> FCM
-//        if (checkGooglePlay(context)) {
-//            FirebaseMessaging.getInstance().setAutoInitEnabled(true);
-//            return;
-//        }
+        if (SystemUtil.checkGooglePlay(context)) {
+            FirebaseMessaging.getInstance().setAutoInitEnabled(true);
+            return;
+        }
         // 2. 判断当前系统 -> 系统推送
-//        if (RomUtil.isMiui()) {
-//            String appId = SystemUtil.getStringMetaData(context, "MI_APP_ID");
-//            String appKey = SystemUtil.getStringMetaData(context, "MI_APP_KEY");
-//            if (!TextUtils.isEmpty(appId) && !TextUtils.isEmpty(appKey)) {
-//                MiPushClient.registerPush(context, appId, appKey);
-//                return;
-//            }
-//        }
+        if (RomUtil.isMiui()) {
+            String appId = SystemUtil.getStringMetaData(context, "MI_APP_ID");
+            String appKey = SystemUtil.getStringMetaData(context, "MI_APP_KEY");
+            if (!TextUtils.isEmpty(appId) && !TextUtils.isEmpty(appKey)) {
+                MiPushClient.registerPush(context, appId, appKey);
+                return;
+            }
+        }
         // 3. 其他类型 -> XG
         XGPushManager.registerPush(context);
     }

@@ -21,7 +21,7 @@ public class MessageReceiver extends PushBaseReceiver {
     @Override
     public void onRegisterResult(Context context, int pushType, String token) {
         if (!TextUtils.isEmpty(token)) {
-            Log.e("PushBaseReceiver", "注册成功: " + token);
+            Log.e("PushBaseReceiver", "注册成功: " + pushType + ", " + token);
         } else {
             Log.e("PushBaseReceiver", "注册失败");
         }

@@ -24,4 +24,7 @@ dependencies {
     implementation 'com.tencent.xinge:xinge:3.2.3-release'
     implementation 'com.tencent.wup:wup:1.0.0.E-release'
     implementation 'com.tencent.mid:mid:4.0.6-release'
+    // FCM
+    implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.google.firebase:firebase-messaging:17.0.0'
 }

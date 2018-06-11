@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "205227930378",
+    "firebase_url": "https://pushtest-42c84.firebaseio.com",
+    "project_id": "pushtest-42c84",
+    "storage_bucket": "pushtest-42c84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205227930378:android:e6e9a96303bddeac",
+        "android_client_info": {
+          "package_name": "com.mic.push"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205227930378-skl9ridboutk3v5t3iumhigs4mkqkhmr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjetqfSWvUECRhgvbf6T5WLIK5AN-TmIQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

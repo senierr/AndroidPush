@@ -5,6 +5,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+
 /**
  * 系统工具
  *
@@ -40,9 +43,9 @@ public class SystemUtil {
      * @param context
      * @return
      */
-//    private static boolean checkGooglePlay(Context context) {
-//        GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
-//        int resultCode = googleApiAvailability.isGooglePlayServicesAvailable(context);
-//        return resultCode == ConnectionResult.SUCCESS;
-//    }
+    public static boolean checkGooglePlay(Context context) {
+        GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
+        int resultCode = googleApiAvailability.isGooglePlayServicesAvailable(context);
+        return resultCode == ConnectionResult.SUCCESS;
+    }
 }
