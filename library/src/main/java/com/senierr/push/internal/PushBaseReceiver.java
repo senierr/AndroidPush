@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.senierr.push.PushManager;
+
 /**
  * 推送消息广播
  *
@@ -16,6 +18,7 @@ public abstract class PushBaseReceiver extends BroadcastReceiver {
     public static final String ACTION_REGISTER = "com.senierr.push.register";
 
     public static final String KEY_MESSAGE = "message";
+    public static final String KEY_PUSH_TYPE = "push_type";
     public static final String KEY_REGISTER = "register";
 
     @Override
@@ -24,7 +27,9 @@ public abstract class PushBaseReceiver extends BroadcastReceiver {
         if (ACTION_NOTIFICATION.equalsIgnoreCase(intent.getAction())) {
             onNotificationMessageClicked(context, (PushMessage) intent.getParcelableExtra(KEY_MESSAGE));
         } else if (ACTION_REGISTER.equalsIgnoreCase(intent.getAction())) {
-            onRegisterResult(context, intent.getStringExtra(KEY_REGISTER));
+            onRegisterResult(context,
+                    intent.getIntExtra(KEY_PUSH_TYPE, PushManager.TYPE_UNKNOWN),
+                    intent.getStringExtra(KEY_REGISTER));
         }
     }
 
@@ -40,7 +45,8 @@ public abstract class PushBaseReceiver extends BroadcastReceiver {
      * 注册回调
      *
      * @param context
+     * @param pushType
      * @param token
      */
-    public abstract void onRegisterResult(Context context, String token);
+    public abstract void onRegisterResult(Context context, int pushType, String token);
 }

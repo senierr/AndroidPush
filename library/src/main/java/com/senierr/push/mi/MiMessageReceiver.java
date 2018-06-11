@@ -3,6 +3,7 @@ package com.senierr.push.mi;
 import android.content.Context;
 import android.content.Intent;
 
+import com.senierr.push.PushManager;
 import com.senierr.push.internal.PushBaseReceiver;
 import com.xiaomi.mipush.sdk.MiPushCommandMessage;
 import com.xiaomi.mipush.sdk.PushMessageReceiver;
@@ -23,6 +24,7 @@ public class MiMessageReceiver extends PushMessageReceiver {
         String cmdArg1 = ((arguments != null && arguments.size() > 0) ? arguments.get(0) : null);
         Intent intent = new Intent();
         intent.setAction(PushBaseReceiver.ACTION_REGISTER);
+        intent.putExtra(PushBaseReceiver.KEY_PUSH_TYPE, PushManager.TYPE_MI);
         intent.putExtra(PushBaseReceiver.KEY_REGISTER, cmdArg1);
         context.sendBroadcast(intent);
     }

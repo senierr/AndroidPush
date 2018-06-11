@@ -3,13 +3,10 @@ package com.senierr.push;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.senierr.push.internal.PushBaseReceiver;
 import com.senierr.push.internal.PushMessage;
-import com.tencent.android.tpush.XGCustomPushNotificationBuilder;
 import com.tencent.android.tpush.XGPushClickedResult;
-import com.tencent.android.tpush.XGPushConfig;
 import com.tencent.android.tpush.XGPushManager;
 import com.xiaomi.mipush.sdk.MiPushMessage;
 import com.xiaomi.mipush.sdk.PushMessageHelper;
@@ -27,6 +24,11 @@ import java.util.Iterator;
  * @date 2018/6/6
  */
 public class PushManager {
+
+    public static final int TYPE_UNKNOWN = 0;
+    public static final int TYPE_FCM = 0;
+    public static final int TYPE_MI = 1;
+    public static final int TYPE_XG = 2;
 
     private static final String TAG = PushManager.class.getSimpleName();
 

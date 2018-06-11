@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.senierr.push.PushManager;
 import com.senierr.push.internal.PushBaseReceiver;
 import com.tencent.android.tpush.XGPushBaseReceiver;
 import com.tencent.android.tpush.XGPushClickedResult;
@@ -23,6 +24,7 @@ public class XGMessageReceiver extends XGPushBaseReceiver {
     public void onRegisterResult(Context context, int i, XGPushRegisterResult xgPushRegisterResult) {
         Intent intent = new Intent();
         intent.setAction(PushBaseReceiver.ACTION_REGISTER);
+        intent.putExtra(PushBaseReceiver.KEY_PUSH_TYPE, PushManager.TYPE_XG);
         intent.putExtra(PushBaseReceiver.KEY_REGISTER, xgPushRegisterResult.getToken());
         context.sendBroadcast(intent);
     }
