@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.senierr.push.internal.PushBaseReceiver;
 import com.senierr.push.internal.PushMessage;
@@ -43,6 +44,7 @@ public class PushManager {
     public static void register(Context context) {
         // 1. 判断谷歌服务是否可用 -> FCM
         if (SystemUtil.checkGooglePlay(context)) {
+            FirebaseApp.initializeApp(context);
             FirebaseMessaging.getInstance().setAutoInitEnabled(true);
             return;
         }

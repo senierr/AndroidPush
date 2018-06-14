@@ -25,7 +25,9 @@ public class XGMessageReceiver extends XGPushBaseReceiver {
         Intent intent = new Intent();
         intent.setAction(PushBaseReceiver.ACTION_REGISTER);
         intent.putExtra(PushBaseReceiver.KEY_PUSH_TYPE, PushManager.TYPE_XG);
-        intent.putExtra(PushBaseReceiver.KEY_REGISTER, xgPushRegisterResult.getToken());
+        if (i == XGPushBaseReceiver.SUCCESS) {
+            intent.putExtra(PushBaseReceiver.KEY_REGISTER, xgPushRegisterResult.getToken());
+        }
         context.sendBroadcast(intent);
     }
 
