@@ -3,6 +3,7 @@ package com.senierr.push;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.google.firebase.FirebaseApp;
@@ -70,6 +71,15 @@ public class PushManager {
         if (activity == null) return false;
 
         PushMessage pushMessage = null;
+        // FCM
+        Bundle bundle = activity.getIntent().getExtras();
+        if (bundle != null && bundle.size() > 0) {
+            pushMessage = new PushMessage();
+            for (String key: bundle.keySet()) {
+                pushMessage.getExtra().put(key, bundle.getString(key));
+            }
+        }
+
         // 小米
         MiPushMessage message = (MiPushMessage) activity.getIntent()
                 .getSerializableExtra(PushMessageHelper.KEY_MESSAGE);

@@ -48,4 +48,21 @@ public class SystemUtil {
         int resultCode = googleApiAvailability.isGooglePlayServicesAvailable(context);
         return resultCode == ConnectionResult.SUCCESS;
     }
+
+    /**
+     * 获取应用图标
+     *
+     * @param context
+     * @return
+     */
+    public static int getAppIcon(Context context) {
+        try {
+            PackageManager pm = context.getPackageManager();
+            ApplicationInfo info = pm.getApplicationInfo(context.getPackageName(), 0);
+            return info.icon;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }

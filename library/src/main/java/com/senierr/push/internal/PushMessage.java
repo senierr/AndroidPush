@@ -16,7 +16,7 @@ public class PushMessage implements Parcelable {
 
     private String title;
     private String content;
-    private Map<String, String> extra;
+    private Map<String, String> extra = new HashMap<>();
 
     public String getTitle() {
         return title;

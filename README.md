@@ -1,10 +1,8 @@
 # AndroidPush
 
-> Android推送整合、自动切换最优推送渠道
-
-1. 支持~~FCM~~、小米推送、信鸽推送  
+1. 支持FCM、小米推送、信鸽推送
 2. 支持自动切换最优推送渠道  
-3. 支持通知栏、透传两种消息类型  
+3. 支持通知栏消息类型
 
 ## 配置FCM
 
@@ -58,16 +56,10 @@ apply plugin: 'com.google.gms.google-services'
 
 ```
 defaultConfig {
-        applicationId "com.mic.push"
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        ...
 
         manifestPlaceholders = [
                 PACKAGE_NAME:"com.mic.push",
-                XG_ACCESS_ID: "2100293400",
-                XG_ACCESS_KEY: "AIG72431QUVD",
                 MI_APP_ID: "2882303761517805379",
                 MI_APP_KEY : "5871780552379",
         ]
@@ -76,9 +68,21 @@ defaultConfig {
 
 ## 配置信鸽推送
 
+信鸽上注册应用，并在defaultConfig中配置XG_ACCESS_ID、XG_ACCESS_KEY
+
+```
+defaultConfig {
+        ...
+
+        manifestPlaceholders = [
+                XG_ACCESS_ID: "2100293400",
+                XG_ACCESS_KEY: "AIG72431QUVD",
+        ]
+    }
+```
 
 
-## 1. 权限
+## 权限配置
 ```
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -100,9 +104,11 @@ defaultConfig {
 ```
 
 ## 1. 消息类型
-推送消息包含两种类型：通知栏消息和透传消息  
+
+> 由于当应用处于前台时，FCM不会显示通知栏，小米推送无法保证透传消息送达，所以，统一采用通知栏消息模式。
+
 类名：PushMessage  
-区别：通知栏消息有title和content，而透传消息没有  
+
 
 ## 2. 推送注册
 ```
@@ -115,7 +121,7 @@ PushManager.register(this);
 PushManager.handleMessage(this)
 ```
 启动Activity中加入此方法，拦截并统一处理消息。通过继承PushBaseReceiver，在onNotificationMessageClicked中处理；  
-注：透传消息暂未加入
+
 
 
 

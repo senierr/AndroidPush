@@ -2,7 +2,6 @@ package com.senierr.push.xg;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.senierr.push.PushManager;
 import com.senierr.push.internal.PushBaseReceiver;
